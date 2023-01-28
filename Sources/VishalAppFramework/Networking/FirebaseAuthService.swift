@@ -17,8 +17,8 @@ protocol FirebaseAuthServiceProtocol: AnyObject {
     func signOutUser()
 }
 
-class FirebaseAuthService: DependencyContainer.Component, FirebaseAuthServiceProtocol {
-    func requestOTP(phoneNumber: String, completion: @escaping (String?, Error?) -> Void) {
+public class FirebaseAuthService: DependencyContainer.Component, FirebaseAuthServiceProtocol {
+    public func requestOTP(phoneNumber: String, completion: @escaping (String?, Error?) -> Void) {
         Auth.auth().languageCode = "en"
         
         PhoneAuthProvider.provider().verifyPhoneNumber(phoneNumber, uiDelegate: nil) { (verificationID, error) in
@@ -26,7 +26,7 @@ class FirebaseAuthService: DependencyContainer.Component, FirebaseAuthServicePro
         }
     }
     
-    func signInWithCode(code: String, verificationId: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
+    public func signInWithCode(code: String, verificationId: String, completion: @escaping (AuthDataResult?, Error?) -> Void) {
         
         let credential = PhoneAuthProvider.provider().credential(withVerificationID: verificationId, verificationCode: code)
 
@@ -35,7 +35,7 @@ class FirebaseAuthService: DependencyContainer.Component, FirebaseAuthServicePro
         }
     }
     
-    func getUserIDToken(completion: @escaping (String?) -> Void) {
+    public func getUserIDToken(completion: @escaping (String?) -> Void) {
         guard let currentUser = getCurrentUser() else {
             completion(nil)
             return
@@ -46,15 +46,15 @@ class FirebaseAuthService: DependencyContainer.Component, FirebaseAuthServicePro
         }
     }
     
-    func getCurrentUser() -> User? {
+    public func getCurrentUser() -> User? {
         return Auth.auth().currentUser
     }
     
-    func isUserSignedIn() -> Bool {
+    public func isUserSignedIn() -> Bool {
         return getCurrentUser() != nil
     }
     
-    func signOutUser() {
+    public func signOutUser() {
         do {
             try Auth.auth().signOut()
         } catch {

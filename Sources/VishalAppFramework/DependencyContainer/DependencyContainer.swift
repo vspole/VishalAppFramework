@@ -14,7 +14,7 @@ public class DependencyContainer: ObservableObject, EntityProtocol {
 }
 
 extension DependencyContainer {
-    class Component {
+    public class Component {
         unowned var entity: DependencyContainer
 
         init(entity: DependencyContainer) {
@@ -22,7 +22,7 @@ extension DependencyContainer {
         }
     }
 
-    static func create() -> DependencyContainer {
+    public static func create() -> DependencyContainer {
         let container = DependencyContainer()
         container.components = [
             LocationService(entity: container),
