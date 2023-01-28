@@ -60,8 +60,6 @@ public class FirebaseAuthService: DependencyContainer.Component, FirebaseAuthSer
         } catch {
             print("Error: ", error)
         }
-        // Reset the App State on sign out
-        entity.dataComponent.appState.value = .init()
     }
 }
 
