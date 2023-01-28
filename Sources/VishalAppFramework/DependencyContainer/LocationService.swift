@@ -11,7 +11,7 @@ import Foundation
 import MapKit
 
 @available(iOS 15, *)
-protocol LocationServiceProtocol {
+public protocol LocationServiceProtocol {
     var status: CurrentValueSubject<CLAuthorizationStatus, Never> { get }
     var location: CurrentValueSubject<CLLocation?, Never> { get }
     var latitude: CLLocationDegrees { get }

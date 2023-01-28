@@ -8,7 +8,7 @@
 import Foundation
 import FirebaseAuth
 
-protocol FirebaseAuthServiceProtocol: AnyObject {
+public protocol FirebaseAuthServiceProtocol: AnyObject {
     func requestOTP(phoneNumber: String, completion: @escaping (String?, Error?) -> Void)
     func signInWithCode(code: String, verificationId: String, completion: @escaping (AuthDataResult?, Error?) -> Void)
     func getUserIDToken(completion: @escaping (String?) -> Void)

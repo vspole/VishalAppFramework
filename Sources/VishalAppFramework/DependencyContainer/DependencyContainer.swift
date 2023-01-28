@@ -21,28 +21,7 @@ extension DependencyContainer {
             self.entity = entity
         }
     }
-
-    public static func create() -> DependencyContainer {
-        let container = DependencyContainer()
-        container.components = [
-            LocationService(entity: container),
-            FirebaseAuthService(entity: container),
-            DataComponent(entity: container),
-            TokenManager(entity: container),
-            LocalStorageManager()
-        ]
-        return container
-    }
 }
 
-// MARK: - Convenience property wrappers
 
-extension DependencyContainer {
-    var locationService: LocationServiceProtocol { getComponent() }
-    var firebaseAuthService: FirebaseAuthServiceProtocol { getComponent() }
-    var localStorageManager: LocalStorageManagerProtocol { getComponent() }
-    var appState: Store<AppState> { dataComponent.appState }
-    var dataComponent: DataComponentProtocol { getComponent() }
-    var tokenManager: TokenManagerProtocol { getComponent() }
-}
 
