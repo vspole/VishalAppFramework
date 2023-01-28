@@ -8,8 +8,8 @@
 
 import Foundation
 
-class DependencyContainer: ObservableObject, EntityProtocol {
-    var components: [AnyObject] = []
+public class DependencyContainer: ObservableObject, EntityProtocol {
+    public var components: [AnyObject] = []
 
 }
 

@@ -14,7 +14,7 @@ public protocol EntityProtocol: AnyObject {
 }
 
 extension EntityProtocol {
-    func getComponent<T>() -> T {
+    public func getComponent<T>() -> T {
         guard let component: T = getOptionalComponent() else {
             fatalError("Expected component type: \(T.self)")
         }
